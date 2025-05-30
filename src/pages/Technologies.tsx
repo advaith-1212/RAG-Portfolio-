@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { ArrowLeft, Code2, Database, Cloud, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
+import { PageTemplate } from '@/components/ui/page-template';
 
 const Technologies = () => {
   const navigate = useNavigate();
@@ -32,36 +32,33 @@ const Technologies = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#55C2BB] dark:bg-gray-900 text-[#0E1B1A] dark:text-white transition-colors">
-      <div className="container mx-auto px-4 py-6 max-w-6xl">
-        <div className="flex items-center mb-8">
-          <Button
-            onClick={() => navigate('/')}
-            variant="outline"
-            size="sm"
-            className="mr-4 border-[#0E1B1A]/20 dark:border-white/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back
-          </Button>
-          <div>
-            <h1 className="text-3xl font-bold text-[#0E1B1A] dark:text-white">Technologies & Skills</h1>
-            <p className="text-[#0E1B1A]/70 dark:text-white/70">40+ technologies mastered</p>
-          </div>
-        </div>
+    <PageTemplate
+      title="Technologies & Skills"
+      subtitle="40+ technologies mastered"
+    >
+      <div className="flex flex-col gap-6">
+        <Button
+          onClick={() => navigate('/')}
+          variant="outline"
+          size="sm"
+          className="w-fit border-white/20 bg-gray-800/80 backdrop-blur-sm"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back
+        </Button>
 
         <div className="grid md:grid-cols-2 gap-6">
           {techCategories.map((category, index) => (
-            <Card key={index} className="p-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-[#0E1B1A]/10 dark:border-white/10">
+            <Card key={index} className="p-6 bg-gray-800/60 backdrop-blur-sm border-white/10">
               <div className="flex items-center mb-4">
-                <category.icon className="h-6 w-6 text-[#0E1B1A]/80 dark:text-white/80 mr-3" />
-                <h3 className="text-xl font-semibold text-[#0E1B1A] dark:text-white">{category.category}</h3>
+                <category.icon className="h-6 w-6 text-white/80 mr-3" />
+                <h3 className="text-xl font-semibold text-white">{category.category}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.technologies.map((tech, techIndex) => (
                   <span 
                     key={techIndex} 
-                    className="bg-[#0E1B1A]/10 dark:bg-white/10 text-[#0E1B1A] dark:text-white px-3 py-1 rounded-full text-sm font-medium"
+                    className="bg-white/10 px-3 py-1 rounded-full text-sm font-medium"
                   >
                     {tech}
                   </span>
@@ -71,7 +68,7 @@ const Technologies = () => {
           ))}
         </div>
       </div>
-    </div>
+    </PageTemplate>
   );
 };
 
