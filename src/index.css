@@ -89,7 +89,8 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: #54C2BB;
+    color: #0E1B1A;
   }
 }
 
