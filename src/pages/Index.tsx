@@ -121,39 +121,47 @@ const Index = () => {
 
     await simulateTyping();
 
-    // Enhanced AI responses with more technical depth
-    const aiResponses = {
-      'professional experience': "I have over 8 years of experience in full-stack development and AI/ML engineering, specializing in scalable web applications and data-driven solutions. My career highlights include leading cross-functional teams of 12+ developers, architecting microservices handling 1M+ daily requests, and driving technical innovation across multiple domains including fintech, healthcare, and e-commerce.",
-      'projects': "Key projects include: 1) **Real-time Analytics Dashboard** - Built a React/Node.js platform processing 100K+ events/second with 99.9% uptime, 2) **AI-Powered Recommendation Engine** - Developed ML models improving user engagement by 40% using TensorFlow and Python, 3) **Distributed Trading Platform** - Led a team of 8 to build a high-frequency trading system with sub-millisecond latency using Rust and Apache Kafka.",
-      'skills': "**Frontend:** React, TypeScript, Next.js, Vue.js, WebGL, D3.js | **Backend:** Node.js, Python, Rust, Java, Go | **Cloud & DevOps:** AWS (Solutions Architect Certified), Docker, Kubernetes, Terraform | **Databases:** PostgreSQL, MongoDB, Redis, ClickHouse | **AI/ML:** TensorFlow, PyTorch, Scikit-learn, OpenAI API | **Tools:** Git, CI/CD, Monitoring (Grafana, Prometheus)",
-      'education': "**M.S. Computer Science** - Stanford University (2016) - Focus on Machine Learning and Distributed Systems, GPA: 3.9/4.0 | **B.S. Software Engineering** - UC Berkeley (2014) - Magna Cum Laude | **Certifications:** AWS Solutions Architect Professional, Google Cloud ML Engineer, Kubernetes CKA",
-      'default': "That's a great question! I'm designed to discuss various aspects of my professional journey. Could you be more specific about what you'd like to know? You can ask about my experience, skills, projects, education, or recent activities. I can also share insights about specific technologies, methodologies, or industry trends I've worked with."
-    };
-
-    const getResponse = (query: string) => {
-      const lowerQuery = query.toLowerCase();
-      if (lowerQuery.includes('experience') || lowerQuery.includes('career') || lowerQuery.includes('professional')) {
-        return aiResponses['professional experience'];
-      } else if (lowerQuery.includes('project')) {
-        return aiResponses['projects'];
-      } else if (lowerQuery.includes('skill') || lowerQuery.includes('technical') || lowerQuery.includes('tools')) {
-        return aiResponses['skills'];
-      } else if (lowerQuery.includes('education') || lowerQuery.includes('degree') || lowerQuery.includes('university')) {
-        return aiResponses['education'];
-      } else {
-        return aiResponses['default'];
+    try {
+      // Make API call to the backend
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: content })
+      });
+      
+      if (!response.ok) {
+        throw new Error("Failed to get response from API");
       }
-    };
+      
+      const data = await response.json();
+      
+      const aiMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: data.text,
+        sender: 'assistant',
+        timestamp: new Date()
+      };
 
-    const aiMessage: Message = {
-      id: (Date.now() + 1).toString(),
-      content: getResponse(content),
-      sender: 'assistant',
-      timestamp: new Date()
-    };
-
-    setMessages(prev => [...prev, aiMessage]);
-    setIsLoading(false);
+      setMessages(prev => [...prev, aiMessage]);
+    } catch (error) {
+      console.error("Error fetching response:", error);
+      toast({
+        title: "Error",
+        description: "Failed to get a response. Please try again.",
+        variant: "destructive"
+      });
+      
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: "I'm sorry, I encountered an error while processing your request. Please try again.",
+        sender: 'assistant',
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleQuickPrompt = (prompt: string) => {

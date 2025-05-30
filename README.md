@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+# RAG Portfolio Chatbot
 
-## Project info
+A personalized AI chatbot that uses RAG (Retrieval-Augmented Generation) to answer questions about your professional profile. Built with React, Express, and Google's Gemini API.
 
-**URL**: https://lovable.dev/projects/79bf7894-d21d-4890-9159-1dc646db51f3
+## Features
 
-## How can I edit this code?
+- 🤖 Interactive AI chat interface
+- 🎨 Beautiful, responsive UI with dark mode
+- 📚 RAG-based answers using your profile data
+- 🔄 Real-time response generation
+- 🎯 Quick-start prompts for common questions
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- Frontend: React + TypeScript + Vite + shadcn/ui
+- Backend: Express.js
+- AI: Google Gemini API
+- Styling: Tailwind CSS
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/79bf7894-d21d-4890-9159-1dc646db51f3) and start prompting.
+## Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Node.js (v18 or higher)
+- pnpm
+- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
 
-**Use your preferred IDE**
+## Setup Instructions
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Clone the repository:
+   ```sh
+   git clone <your-repo-url>
+   cd convo-persona-profile
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. Install dependencies:
+   ```sh
+   pnpm install
+   cd backend && pnpm install && cd ..
+   ```
 
-Follow these steps:
+3. Set up your personal content:
+   - Copy `content/profile.example.md` to `content/advaith.md`
+   - Edit `content/advaith.md` with your personal information
+   - This file is gitignored by default for privacy
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+4. Set up environment variables:
+   - Copy `.env.example` to `.env`
+   - Add your Google Gemini API key to `.env`
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+5. Start the backend server:
+   ```sh
+   pnpm run backend
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+6. In a new terminal, start the frontend:
+   ```sh
+   pnpm run dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+7. Visit `http://localhost:8080` to interact with your chatbot!
+
+## Customization
+
+- Edit `content/advaith.md` to update your profile information
+- Modify the prompt in `backend/rag.js` to adjust the chatbot's personality
+- Update the UI components in `src/components` to match your style
+
+## Project Structure
+
+```
+├── backend/              # Express server with Gemini API integration
+│   ├── index.js         # Server setup and API endpoints
+│   └── rag.js           # RAG implementation with Gemini
+├── content/
+│   └── advaith.md       # Your professional profile content
+├── src/                 # Frontend React application
+│   ├── components/      # UI components
+│   ├── hooks/          # Custom React hooks
+│   └── pages/          # Page components
+└── .env                # Environment variables (not in git)
 ```
 
-**Edit a file directly in GitHub**
+## Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Create a `.env` file with the following variables:
+```env
+GOOGLE_API_KEY=your_api_key_here
+PORT=8787
+VITE_API_URL=http://localhost:8787
+```
 
-**Use GitHub Codespaces**
+## Security Notes
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Never commit your `.env` file
+- Keep your API keys private
+- The `.gitignore` file is configured to protect sensitive data
 
-## What technologies are used for this project?
+## Contributing
 
-This project is built with:
+Feel free to submit issues and enhancement requests!
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## License
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/79bf7894-d21d-4890-9159-1dc646db51f3) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+MIT
