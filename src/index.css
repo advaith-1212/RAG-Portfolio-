@@ -1,10 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 84 75% 55%; /* #54C2BB converted to HSL */
+    --background: 84 75% 55%; /* #55C2BB converted to HSL */
     --foreground: 175 30% 8%; /* #0E1B1A converted to HSL */
 
     --card: 84 75% 55%;
@@ -89,7 +90,7 @@
   }
 
   body {
-    background-color: #54C2BB;
+    background-color: #55C2BB;
     color: #0E1B1A;
   }
 }
