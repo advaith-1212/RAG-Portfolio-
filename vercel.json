@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://advaith.onrender.com/api/$1"
+    }
+  ]
+}
