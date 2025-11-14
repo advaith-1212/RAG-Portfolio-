@@ -27,8 +27,8 @@ const Index = () => {
   const { toast } = useToast();
 
   // Animated counters
-  const projectsCount = useCountUp(25, 2000);
-  const experienceCount = useCountUp(8, 2000);
+  const projectsCount = useCountUp(7, 2000);
+  const experienceCount = useCountUp(5, 2000);
   const technologiesCount = useCountUp(40, 2000);
   const successRateCount = useCountUp(98, 2000);
 
@@ -52,7 +52,7 @@ const Index = () => {
     },
     { 
       icon: Globe, 
-      label: "Years Exp", 
+      label: "Experience", 
       value: `${experienceCount}+`, 
       color: "text-emerald-400",
       route: "/experience"
@@ -87,7 +87,7 @@ const Index = () => {
     setIsDarkMode(true);
     const welcomeMessage: Message = {
       id: '1',
-      content: "Hello! I'm your AI portfolio assistant. I'm here to help you explore my professional background, skills, and experiences. Feel free to ask me anything about my career journey, or use one of the quick prompts below to get started!",
+      content: "Hello! I'm Advaith's digital twin. Talking to me is just like talking to him, I'm here to help you explore my professional background, skills, and experiences. Feel free to ask me anything about my career journey, or use one of the quick prompts to get started!",
       sender: 'assistant',
       timestamp: new Date()
     };
@@ -187,7 +187,7 @@ const Index = () => {
           </div>
           <div>
             <h1 className="text-3xl font-bold text-white">
-              AI Portfolio Dashboard
+              Venkata Satyasri Advaith Hanumanchi
             </h1>
             <p className="text-white/70 text-lg">
               Interactive Professional Profile System
@@ -331,7 +331,7 @@ const Index = () => {
           <Card className="bg-gray-800/60 backdrop-blur-sm border-white/10 p-4">
             <div className="flex items-center space-x-2 mb-4">
               <BarChart3 className="h-5 w-5 text-cyan-400" />
-              <h3 className="font-semibold text-cyan-400">Quick Commands</h3>
+              <h3 className="font-semibold text-cyan-400">Quick Prompts</h3>
             </div>
             <div className="space-y-2">
               {quickStartPrompts.slice(0, 4).map((prompt, index) => (

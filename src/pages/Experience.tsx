@@ -9,28 +9,44 @@ const Experience = () => {
   const navigate = useNavigate();
 
   const experiences = [
-    {
-      company: "TechCorp Inc.",
-      role: "Senior Full-Stack Engineer",
-      period: "2020 - Present",
-      description: "Leading cross-functional teams of 12+ developers, architecting microservices handling 1M+ daily requests",
-      achievements: ["Improved system performance by 40%", "Led migration to cloud architecture", "Mentored 8 junior developers"]
-    },
-    {
-      company: "StartupXYZ",
-      role: "Full-Stack Developer", 
-      period: "2018 - 2020",
-      description: "Built scalable web applications from ground up, focusing on user experience and performance",
-      achievements: ["Developed 3 major product features", "Reduced load times by 60%", "Implemented CI/CD pipeline"]
-    },
-    {
-      company: "DevStudio",
-      role: "Frontend Developer",
-      period: "2016 - 2018", 
-      description: "Created responsive web interfaces and collaborated with design teams",
-      achievements: ["Built 15+ client websites", "Implemented modern design systems", "Optimized for mobile-first"]
-    }
-  ];
+  {
+    company: "TrenchExchange",
+    role: "Founding Team",
+    period: "Dec 2024 – Present",
+    description:
+      "Defined JTBD for real-time alpha discovery. Scoped MVP, sequenced roadmap, executed early BD and investor outreach.",
+    achievements: [
+      "Designed snipe-in/safe-out execution flows",
+      "Ran product demos; converted feedback into user stories",
+      "Built early VC pipeline and partnership funnel",
+      
+    ]
+  },
+  {
+    company: "Deccan AI",
+    role: "ML Ops Intern (R&D)",
+    period: "Mar 2025 – Jul 2025",
+    description:
+      "Owned protocol design, rubric creation, dataset curation, and analysis for two research studies; delivered synthetic-data pipelines for enterprise clients.",
+    achievements: [
+      "Delivered E2E data pipelines for Microsoft and Apple",
+      "Owned Google SFT-Data supply/delivery workflows",
+      "Standardized failure-mode taxonomies across teams"
+    ]
+  },
+  {
+    company: "IEEE",
+    role: "Invited Peer Reviewer",
+    period: "May 2024 – Sep 2025",
+    description:
+      "Reviewed AI/ML papers for INDISCON, CVMI, ISSC; assessed novelty, methodology, and rigor under strict deadlines.",
+    achievements: [
+      "Produced formal review reports and recommendations",
+      "Strengthened academic profile through repeated invitations",
+      "Contributed to global research communities"
+    ]
+  }
+];
 
   return (
     <PageTemplate

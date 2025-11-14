@@ -43,5 +43,3 @@ dist-ssr
 /backend/chroma/
 /backend/chroma.db/
 
-# Personal content
-content/advaith.md
